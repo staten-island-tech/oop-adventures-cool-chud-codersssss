@@ -120,6 +120,7 @@ class imposter:
         self.color = color
     suspicious = 0
     trust = 100
+    crewmatess = 5
    
     name = input("What do you want your ingame name to be? ")
     print("You are the imposter, your goal is to decieve and kill all the crewmates.")
@@ -153,12 +154,31 @@ class imposter:
     
     if pt1 == "6" or "5":
         action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
-    elif pt1 != "6" or "5":
+        ventss = "none"
+    else:
         action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
+        ventss = "yes"
 
 
 
-    
+
+    if action1 == "1":
+        print(f"Crewmate saw you fake tasks...")
+        trust += 10
+        print(trust)
+        print(suspicious)     
+    elif action1 == "2" and ventss == "none":
+        suspicious += 35
+        trust -= 20
+        print(trust)
+        print(suspicious)
+    elif action1 == "2":
+        crewmatess -= 1
+        suspicious += 10
+        print(trust)
+        print(suspicious)   
+
+
 
 
     
