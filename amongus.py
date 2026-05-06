@@ -1,3 +1,10 @@
+import random
+
+
+
+
+
+
 locations = [
     {
         "Name": "Cafeteria",
@@ -99,12 +106,10 @@ locations = [
     }
 ]
 
-
-
-
-
-
-
+class crewmate:
+    def __init__(selfs,colors,names):
+        selfs.names = names
+        selfs.colors = colors
 
 
 class imposter:
@@ -115,6 +120,7 @@ class imposter:
         self.color = color
     suspicious = 0
     trust = 100
+   
     name = input("What do you want your ingame name to be? ")
     print("You are the imposter, your goal is to decieve and kill all the crewmates.")
     color = input("Choose your color, green, black, red, white or pink?   ")
@@ -137,13 +143,21 @@ class imposter:
     print("You have loaded into the game, where do you want to go first? Please insert the # ")
     pt1 = int(input("..."))
 
-    print("Crewmate orange is inside Weapons...")
+    colors = ["cyan", "yellow", "brown", "gray", "purple"]  
+    random_item = random.choice(colors) 
     
     print("You are now in", locations[pt1]["Name"])
     print(locations[pt1])
 
-
+    print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
     
+    if pt1 == "6" or "5":
+        action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
+    elif pt1 != "6" or "5":
+        action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
+
+
+
     
 
 
