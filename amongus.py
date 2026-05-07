@@ -170,16 +170,25 @@ class imposter:
     elif action1 == "2" and ventss == "none":
         suspicious += 35
         trust -= 20
-        print(trust)
-        print(suspicious)
+        print("Your trust level is now", trust)
+        print("Your suspicious level is now",suspicious)   
     elif action1 == "2":
         crewmatess -= 1
         suspicious += 10
+<<<<<<< HEAD
         print(trust)
         print(suspicious)   
 
         
 
+=======
+        print("Your trust level is now", trust)
+        print("Your suspicious level is now",suspicious) 
+    elif action1 == "3":
+        print("You left"[locations][pt1]["Name"]"...") 
+        print("Your trust level is still", trust)
+        print("Your suspicious level is still",suspicious) 
+>>>>>>> 2d37606a4e96cb22bd03da9bc83f1095fe6bc779
 
 
 
