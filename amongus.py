@@ -178,6 +178,8 @@ class imposter:
         print(trust)
         print(suspicious)   
 
+        
+
 
 
 
