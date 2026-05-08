@@ -151,9 +151,9 @@ class imposter:
     
 
 
-   
+    print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
     while trust >= suspicious and crewmatess >= 1: 
-        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+       
         if pt1 == "6" or pt1 == "5":
             action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
             ventss = "none"
