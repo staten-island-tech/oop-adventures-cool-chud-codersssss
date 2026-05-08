@@ -192,6 +192,9 @@ class imposter:
             venting = int(input("choose where to vent"))
             print("you are now in ", locations[venting]["Name"])
             print(locations[venting])
+
+        if action1 == "1" or action1 == "2" or action1 == "3":
+            pt1 = input("where do you want to go? Please insert the #")
     else:  
         print("You have killed all the crewmates")
 
