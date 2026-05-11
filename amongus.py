@@ -151,9 +151,10 @@ class imposter:
     
 
 
-    print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+
     while trust >= suspicious and crewmatess >= 1: 
-       
+        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+
         if pt1 == "6" or pt1 == "5":
             action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
             ventss = "none"
@@ -190,12 +191,12 @@ class imposter:
             print("Your suspicious level is still",suspicious) 
         elif action1 == "4":
             print(locations[pt1]["vents"])
-            venting = int(input("choose where to vent"))
-            print("you are now in ", locations[venting]["Name"])
-            print(locations[venting])
+            pt1 = int(input("choose where to vent"))
+            print("you are now in ", locations[pt1]["Name"])
+            print(locations[pt1])
 
         if action1 == "1" or action1 == "2" or action1 == "3":
-            pt1 = input("where do you want to go? Please insert the #")
+            pt1 = int(input("where do you want to go? Please insert the #"))
     else:  
         print("You have killed all the crewmates")
 
