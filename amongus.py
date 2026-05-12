@@ -154,6 +154,8 @@ class imposter:
 
         colors = ["cyan", "yellow", "brown", "gray", "purple"]  
         random_item = random.choice(colors)
+        report =["body found","body not found"]
+        random_dead = random.choice(report)
 
 
         print("You are now in", locations[pt1]["Name"])
@@ -162,7 +164,7 @@ class imposter:
 
         print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
    
-        if pt1 == "6" or pt1 == "5":
+        if pt1 == 6 or pt1 == 5 or pt1 == 4:
             action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
             ventss = "none"
         else:
@@ -171,10 +173,12 @@ class imposter:
 
 
         if action1 == "1":
-            print(f"Crewmate saw you fake tasks...")
-            trust += 10
-            print("Your trust level is now", trust)
-            print("Your suspicious level is now",suspicious)    
+                print(f"Crewmate saw you fake tasks...")
+                trust += 10
+                print("Your trust level is now", trust)
+                print("Your suspicious level is now",suspicious) 
+
+               
         elif action1 == "2" and ventss == "none":
             crewmatess -= 1
             suspicious += 35
@@ -183,6 +187,10 @@ class imposter:
             print("Your suspicious level is now",suspicious)
             colors.remove(random_item)
             print(random_item, "is dead")
+            print("The body was", random_dead)
+
+
+
         elif action1 == "2":
             crewmatess -= 1
             suspicious += 10
@@ -191,10 +199,13 @@ class imposter:
             print("Your suspicious level is now",suspicious)
             colors.remove(random_item)
             print(random_item, "is dead")
+
+
         elif action1 == "3":
             print("You left",[locations][pt1]["Name"],"...")
             print("Your trust level is still", trust)
             print("Your suspicious level is still",suspicious)
+
         elif action1 =="4":
             print("Choose where to vent.")
             next1 = int(input("..."))
