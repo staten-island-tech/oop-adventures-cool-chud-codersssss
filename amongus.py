@@ -154,7 +154,7 @@ class imposter:
 
         colors = ["cyan", "yellow", "brown", "gray", "purple"]  
         random_item = random.choice(colors)
-        report =["body found","body not found"]
+        report =["found","not found"]
         random_dead = random.choice(report)
 
 
@@ -199,10 +199,11 @@ class imposter:
             print("Your suspicious level is now",suspicious)
             colors.remove(random_item)
             print(random_item, "is dead")
+            print("The body was", random_dead)
 
 
         elif action1 == "3":
-            print("You left",[locations][pt1]["Name"],"...")
+            print("You left",locations[pt1]["Name"],"...")
             print("Your trust level is still", trust)
             print("Your suspicious level is still",suspicious)
 
@@ -210,6 +211,40 @@ class imposter:
             print("Choose where to vent.")
             next1 = int(input("..."))
             print([locations][next1]["vents"])
+        
+        if random_dead == "found":
+            print("[+EMERGENCY MEETING+]")
+            if suspicious > 30:
+                print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
+                defence = int(input("..."))
+                if defence == 1:
+                    print("Your crewmates believe you for now")
+                    trust += 15
+                    suspicious -= 15
+                    print("they decided to skip...")
+                elif defence == 2:
+                    print({random_item}, "was voted out. He was innocent. You are now more suspicious")
+                    trust -= 10
+                    suspicious += 20
+                elif defence == 3:
+                    print("Your crewmates are wary of you.")
+                    trust -= 5
+                    suspicious += 5
+            elif suspicious < 30:
+                print("Your crewmates are not suspicious of you. What are you gonna do? 1. Accuse Someone else, 2. Skip")
+                defence = int(input("..."))
+                if defence == 1:
+                    print({random_item}, "Was voted out. He was innocent. You are now more suspicious")
+                    trust -= 5
+                    suspicious += 10
+                    
+                elif defence == 2:
+                    print("Your crewmates agree to skip")
+                    trust += 15
+
+            
+        
+        
             
 
 
