@@ -127,9 +127,7 @@ class imposter:
 
 
     
-    colors = ["cyan", "yellow", "brown", "gray", "purple"]  
-    random_item = random.choice(colors) 
-
+  
     print("where do you want to go? Please insert the #")
     pt1 = int(input("..."))
 
@@ -138,9 +136,12 @@ class imposter:
     
 
 
-    print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
-    while trust >= suspicious and crewmatess >= 1: 
-        
+    
+    while trust >= suspicious and crewmatess >= 1:   
+        colors = ["cyan", "yellow", "brown", "gray", "purple"]  
+        random_item = random.choice(colors) 
+
+        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
         if pt1 == 6 or pt1 == 5:
             action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
             ventss = "none"
@@ -175,7 +176,7 @@ class imposter:
             colors.remove(random_item)
             print(random_item, "is dead")
         elif action1 == "3":
-            print("You left",[locations][pt1]["Name"],"...") 
+            print("You left", locations[pt1]["Name"],"...") 
             print("Your trust level is still", trust)
             print("Your suspicious level is still",suspicious) 
         elif action1 == "4":
@@ -212,12 +213,13 @@ class imposter:
                     
 
         if action1 == "1" or action1 == "2" or action1 == "3" or action1 == "5":
-            pt1 = input("where do you want to go? Please insert the #")
+            pt1 = int(input("where do you want to go? Please insert the #"))
         
         print("Your suspicious is now", {suspicious})
         print("Your trust is now", {trust})
     else:  
         print("You have killed all the crewmates")
+        print("YOU WINNN!!!!!!")
 
 
 
