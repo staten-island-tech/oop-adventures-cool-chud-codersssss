@@ -157,34 +157,28 @@ class imposter:
         
         if action1 == "1":
             print(f"Crewmate saw you fake tasks...")
-            trust += 10
-            print("Your trust level is now", trust)
-            print("Your suspicious level is now",suspicious)     
+            trust += 10 
         elif action1 == "2" and ventss == "none":
             crewmatess -= 1
             suspicious += 35
             trust -= 20
-            print("Your trust level is now", trust)
-            print("Your suspicious level is now",suspicious)
             colors.remove(random_item)
             print(random_item, "is dead")
         elif action1 == "2":
             crewmatess -= 1
             suspicious += 10
-            print("Your trust level is now", trust)
-            print("Your suspicious level is now",suspicious) 
             colors.remove(random_item)
             print(random_item, "is dead")
         elif action1 == "3":
             print("You left", locations[pt1]["Name"],"...") 
-            print("Your trust level is still", trust)
-            print("Your suspicious level is still",suspicious) 
         elif action1 == "4":
             print(locations[pt1]["vents"])
             venting = int(input("choose where to vent"))
             print("you are now in ", locations[venting]["Name"])
             print(locations[venting])
+            pt1 = venting
         elif action1 == "5":
+            print("[-EMERGENCY MEETING-]")
             if suspicious > 30:
                 print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
                 defence = int(input("..."))
@@ -215,13 +209,16 @@ class imposter:
         if action1 == "1" or action1 == "2" or action1 == "3" or action1 == "5":
             pt1 = int(input("where do you want to go? Please insert the #"))
         
+        
         print("Your suspicious is now", {suspicious})
-        print("Your trust is now", {trust})
+        print("Your trust is now", {trust}) 
+
     else:  
         print("You have killed all the crewmates")
         print("YOU WINNN!!!!!!")
 
-
+        
+        
 
 
 
