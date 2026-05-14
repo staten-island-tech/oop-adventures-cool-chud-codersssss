@@ -167,6 +167,9 @@ class imposter:
 
             print(random_item, "is dead")
 
+
+            print(colors)
+
             print("[-EMERGENCY MEETING-]")
             if suspicious > 30:
                 print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
@@ -178,6 +181,9 @@ class imposter:
                 elif defence == 2:
                     print({random_item}, "was voted out. He was innocent. You are now more suspicious")    
                     colors.remove(random_item)
+
+                    print(colors)
+
                     trust -= 10
                     suspicious += 20
                 elif defence == 3:
@@ -216,6 +222,10 @@ class imposter:
             print(random_item, "is dead")
             print("The body was", [random_body])
             print("There are",crewmatess,"Crewmates left")
+
+            print(colors)
+
+
         elif action1 == "3":
             print("You left", locations[pt1]["Name"],"...") 
         elif action1 == "4":
