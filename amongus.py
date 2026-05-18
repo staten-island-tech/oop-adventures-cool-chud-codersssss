@@ -106,6 +106,7 @@ class imposter:
     trust = 50
     crewmatess = 5
 
+
     name = input("What do you want your ingame name to be? ")
     print("You are the imposter, your goal is to decieve and kill all the crewmates.")
     color = input("Choose your color, green, black, red, white or pink?   ")
@@ -150,6 +151,37 @@ class imposter:
         find_body = ["Found","Not found"]
         random_body = random.choice(find_body)
 
+    def emergency():
+        print("emergency meeting")
+    if suspicious > 30:
+        print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
+        defence = int(input("..."))
+        if defence == 1:
+            print("Your crewmates believe you for now")
+            trust += 5
+            suspicious -= 5 
+        elif defence == 2:
+            print({random_item}, "was voted out. He was innocent. You are now more suspicious")    
+            colors.remove(random_item)
+            print(colors)
+
+            trust -= 10
+            suspicious += 20
+        elif defence == 3:
+            print("Your crewmates are wary of you.")
+            trust -= 5
+            suspicious += 5
+        elif suspicious < 30:
+            print("Your crewmates are not suspicious of you. What are you gonna do? 1. Accuse Someone else, 2. Skip")
+        defence = int(input("..."))
+        if defence == 1:
+            print({random_item}, "Was voted out. He was innocent. You are now more suspicious")
+            trust -= 5
+            suspicious += 10
+        elif defence == 2:
+            print("Your crewmates agree to skip")
+
+        
         print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
 
         if pt1 == 6 or pt1 == 5:
@@ -161,49 +193,16 @@ class imposter:
         else:
             action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
             ventss = "yes"
+        
 
-    if action1 == "5" or random_body == "Found":
+        if action1 == "5" or random_body == "Found":
             print("The body was", [random_body])
             colors.remove(random_item)
             print(random_item, "is dead")
-
-
             print(colors)
-
             print("[-EMERGENCY MEETING-]")
-    if suspicious > 30:
-                print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
-                defence = int(input("..."))
-                if defence == 1:
-                    print("Your crewmates believe you for now")
-                    trust += 5
-                    suspicious -= 5 
-                elif defence == 2:
-                    print({random_item}, "was voted out. He was innocent. You are now more suspicious")    
-                    colors.remove(random_item)
+            emergency
 
-                    print(colors)
-
-                    trust -= 10
-                    suspicious += 20
-                elif defence == 3:
-                    print("Your crewmates are wary of you.")
-                    trust -= 5
-                    suspicious += 5
-    elif suspicious < 30:
-                print("Your crewmates are not suspicious of you. What are you gonna do? 1. Accuse Someone else, 2. Skip")
-                defence = int(input("..."))
-                if defence == 1:
-                    print({random_item}, "Was voted out. He was innocent. You are now more suspicious")
-                    trust -= 5
-                    suspicious += 10
-                elif defence == 2:
-                    print("Your crewmates agree to skip")
-                    
-
-
-
-        
         elif action1 == "1":
             print(f"Crewmate saw you fake tasks...")
             trust += 10 
@@ -250,6 +249,9 @@ class imposter:
 
     if crewmatess == 1:
         print("You have killed them all, omg youre so cool, awesome, and amazing!!")
+
+
+        
         
 
 
