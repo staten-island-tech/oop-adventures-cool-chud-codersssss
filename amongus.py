@@ -1,4 +1,4 @@
-import random
+""" import random
 
 <<<<<<< HEAD
 =======
@@ -322,3 +322,4 @@ class imposter:
         print(locations[venting])        
         
 >>>>>>> face820523a7322b87e21fa39d3744eb002a8ccc
+ """
