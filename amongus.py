@@ -114,12 +114,12 @@ class crewmate:
     
 
 class imposter:
-    def __init__(self, name, suspicious, trust,color):
+    def __init__(self, name, color, suspicious = 0, trust = 50):
         self.name = name
         self.suspicious = suspicious
         self.trust = trust
         self.color = color
-imposter_1 = imposter(input,0,50,input)
+
 
 def start(self):
     self.name = input("What do you want your ingame name to be? ")
@@ -153,17 +153,18 @@ random_item = random.choice(colors)
 report =["found","not found"]
 random_dead = random.choice(report)
 
+
 def kill_novent(self):
         crewmatess -= 1
-        imposter.suspicious += 35
+        self.suspicious += 35
         trust -= 20
         print("Your trust level is now", trust)
-        print("Your suspicious level is now",imposter.suspicious)
+        print("Your suspicious level is now",self.suspicious)
         colors.remove(random_item)
         print(random_item, "is dead")
         print("The body was", random_dead)
 
-def action(self):
+def action():
     print("where do you want to go? Please insert the #")
     pt1 = int(input("..."))
     print("You are now in", locations[pt1]["Name"])
@@ -185,8 +186,8 @@ def fake_tasks(self):
 def kill_vent(self):
         crewmatess -= 1
         self.suspicious += 10
-        trust -=10
-        print("Your trust level is now", trust)
+        self.trust -=10
+        print("Your trust level is now", self.trust)
         print("Your suspicious level is now",self.suspicious)
         colors.remove(random_item)
         print(random_item, "is dead")
@@ -195,7 +196,7 @@ def leave(self,pt1):
         print("You left",locations[pt1]["Name"],"...")
         print("Your trust level is still", self.trust)
         print("Your suspicious level is still",self.suspicious)
-def vent(self):
+def vent():
         print("Choose where to vent.")
         next1 = int(input("..."))
         print([locations][next1]["vents"])
@@ -228,8 +229,7 @@ def emergency(self,random_item):
                 print("Your crewmates agree to skip")
                 self.trust += 15
 
-while imposter.suspicious < imposter.trust:
-     start
+
 
     
 
