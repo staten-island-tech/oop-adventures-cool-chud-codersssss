@@ -99,10 +99,10 @@ locations = [
 
 
 class crewmate:
-    def __init__(selfs,colors,names):
+    def __init__(selfs, colors, names, crewmatess = 6):
         selfs.names = names
         selfs.colors = colors
-
+        selfs.crewmatess = crewmatess
 
 
 
@@ -111,44 +111,36 @@ class crewmate:
 
 
 class imposter:
-    def __init__(self, name, suspicious, trust,color):
+    def __init__(self, name, color, suspicious=0, trust=50):
         self.name = name
         self.suspicious = suspicious
         self.trust = trust
         self.color = color
-        
-imposter1 = imposter(name, 0, 50, color)
+
 
 
 def intro(self):
-    name = input("What do you want your ingame name to be? ")
+    self.name = input("What do you want your ingame name to be? ")
     print("You are the imposter, your goal is to decieve and kill all the crewmates.")
-    color = input("Choose your color, green, black, red, white or pink?   ")
+    self.color = input("Choose your color, green, black, red, white or pink?   ")
 
-    if color == "red":
+    if self.color == "red":
         self.suspicious +=10
         self.trust -= 10
-        self.color == color
         print("Your trust level is now", self.trust)
         print("Your sus level is now", self.suspicious)
-    elif color == "pink":
+    elif self.color == "pink":
         self.trust += 5
         print("Your trust level is now", self.trust)
         print("Your sus level is now", self.suspicious)
-        self.color == color
     else:
         print("Your trust level is: ", self.trust)
         print("Your sus level is: ", self.suspicious)
-        self.color == color
 
 
     print(self.name, self.color)
 
     for index, room in enumerate(locations):
-
-
-
-
         print(index,":", room["Name"])
     print("You have loaded into the game.")
     print("where do you want to go? Please insert the #")
@@ -162,7 +154,7 @@ def intro(self):
 
 
 
-    while self.trust >= self.suspicious and crewmatess > 1:  
+    while self.trust >= self.suspicious and selfs.crewmatess > 1:  
         colors = ["cyan", "yellow", "brown", "gray", "purple"]  
         random_item = random.choice(colors)
         find_body = ["Found","Not found"]
@@ -170,174 +162,118 @@ def intro(self):
 
         
 
-        def emergency():
+        def emergency(self):
             print("emergency meeting")
-        if self.suspicious > 30:
-            print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
-            defence = int(input("..."))
-            if defence == 1:
-                print("Your crewmates believe you for now")
-                self.trust += 5
-                self.suspicious -= 5
-            elif defence == 2:
-                print({random_item}, "was voted out. He was innocent. You are now more suspicious")    
-                colors.remove(random_item)
-                print(colors)
-                self.trust -= 10
-                self.suspicious += 20
-            elif defence == 3:
-                print("Your crewmates are wary of you.")
-                self.trust -= 5
-                self.suspicious += 5
-            elif suspicious < 30:
-                print("Your crewmates are not suspicious of you. What are you gonna do? 1. Accuse Someone else, 2. Skip")
+            if self.suspicious > 30:
+                print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
                 defence = int(input("..."))
                 if defence == 1:
-                    print({random_item}, "Was voted out. He was innocent. You are now more suspicious")
-                    self.trust -= 5
-                    self.suspicious += 10
+                    print("Your crewmates believe you for now")
+                    self.trust += 5
+                    self.suspicious -= 5
                 elif defence == 2:
-                    print("Your crewmates agree to skip")
+                    print({random_item}, "was voted out. He was innocent. You are now more suspicious")    
+                    colors.remove(random_item)
+                    print(colors)
+                    self.trust -= 10
+                    self.suspicious += 20
+                elif defence == 3:
+                    print("Your crewmates are wary of you.")
+                    self.trust -= 5
+                    self.suspicious += 5
+                elif self.suspicious < 30:
+                    print("Your crewmates are not suspicious of you. What are you gonna do? 1. Accuse Someone else, 2. Skip")
+                    defence = int(input("..."))
+                    if defence == 1:
+                        print({random_item}, "Was voted out. He was innocent. You are now more suspicious")
+                        self.trust -= 5
+                        self.suspicious += 10
+                    elif defence == 2:
+                        print("Your crewmates agree to skip")
 
 
        
-           
-        def actions(pt1):
-            if pt1 == 6 or pt1 == 5:
-                action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
-                ventss = "none"
-            elif pt1 == 0:
-                action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, 4. Vent, or 5. Emergency Button? Insert the #   ")
-                ventss = "yes"
-            else:
-                action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
-                ventss = "yes"
+
+        print("where do you want to go? Please insert the #")
+        pt1 = int(input("..."))
+
+
+
+
+        colors = ["cyan", "yellow", "brown", "gray", "purple"]  
+        random_item = random.choice(colors)
+
+
+
+
+        print("You are now in", locations[pt1]["Name"])
+        print(locations[pt1])
+
+
+
+
+        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+
+    def whatufinnado():
+        if pt1 == "6" or pt1 == "5":
+            action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
+            ventss = "none"
+        else:
+            action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
+            ventss = "yes"
+
+
+
+        def action():
+            if action1 == "1":
+                print(f"Crewmate saw you fake tasks...")
+                trust += 10
+                print("Your trust level is now", trust)
+                print("Your suspicious level is now",suspicious)    
+            elif action1 == "2" and ventss == "none":
+                crewmatess -= 1
+                suspicious += 35
+                trust -= 20
+                print("Your trust level is now", trust)
+                print("Your suspicious level is now",suspicious)
+                colors.remove(random_item)
+                print(random_item, "is dead")
+            elif action1 == "2":
+                crewmatess -= 1
+                suspicious += 10
+                print("Your trust level is now", trust)
+                print("Your suspicious level is now",suspicious)
+                colors.remove(random_item)
+                print(random_item, "is dead")
+            elif action1 == "3":
+                print("You left",locations[pt1]["Name"],"...")
+                print("Your trust level is still", trust)
+                print("Your suspicious level is still",suspicious)
+            elif action1 == "4":
+                print(locations[pt1]["vents"])
+                venting = int(input("choose where to vent (write the number):  "))
+                print("you are now in ", locations[venting]["Name"])
+                print(locations[venting])
+
+
+            if action1 == "1" or action1 == "2" or action1 =="3":
+                print("What do you want to do now? Choose a new location to enter:")
+                venting = int(input("..."))
+                print("you are now in ", locations[venting]["Name"])
+                print(locations[venting])        
             
-
-        if action1 == "5" or random_body == "Found":
-            print("The body was", [random_body])
-            colors.remove(random_item)
-            print(random_item, "is dead")
-            print(colors)
-            print("[-EMERGENCY MEETING-]")
-            emergency
+            
+                print("Your suspicious is now", {suspicious})
+                print("Your trust is now", {trust})
 
 
-        elif action1 == "1":
-            print(f"Crewmate saw you fake tasks...")
-            trust += 10
-        elif action1 == "2" and ventss == "none":
-            crewmatess -= 1
-            suspicious += 35
-            trust -= 20
-            colors.remove(random_item)
-            print(random_item, "is dead")
-            print("The body was", [random_body])
-            print("There are",crewmatess,"Crewmates left")
-        elif action1 == "2":
-            crewmatess -= 1
-            suspicious += 10
-            colors.remove(random_item)
-            print(random_item, "is dead")
-            print("The body was", [random_body])
-            print("There are",crewmatess,"Crewmates left")
-
-
-            print(colors)
-
-
-
-
-        elif action1 == "3":
-            print("You left", locations[pt1]["Name"],"...")
-        elif action1 == "4":
-            print(locations[pt1]["vents"])
-            venting = int(input("choose where to vent"))
-            print("you are now in ", locations[venting]["Name"])
-    else:
-        print("You have killed all the crewmates")
-
-
-    print("where do you want to go? Please insert the #")
-    pt1 = int(input("..."))
-
-
-
-
-    colors = ["cyan", "yellow", "brown", "gray", "purple"]  
-    random_item = random.choice(colors)
-
-
-
-
-    print("You are now in", locations[pt1]["Name"])
-    print(locations[pt1])
-
-
-
-
-    print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
-
-
-    if pt1 == "6" or pt1 == "5":
-        action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
-        ventss = "none"
-    else:
-        action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
-        ventss = "yes"
-
-
-
-
-    if action1 == "1":
-        print(f"Crewmate saw you fake tasks...")
-        trust += 10
-        print("Your trust level is now", trust)
-        print("Your suspicious level is now",suspicious)    
-    elif action1 == "2" and ventss == "none":
-        crewmatess -= 1
-        suspicious += 35
-        trust -= 20
-        print("Your trust level is now", trust)
-        print("Your suspicious level is now",suspicious)
-        colors.remove(random_item)
-        print(random_item, "is dead")
-    elif action1 == "2":
-        crewmatess -= 1
-        suspicious += 10
-        print("Your trust level is now", trust)
-        print("Your suspicious level is now",suspicious)
-        colors.remove(random_item)
-        print(random_item, "is dead")
-    elif action1 == "3":
-        print("You left",locations[pt1]["Name"],"...")
-        print("Your trust level is still", trust)
-        print("Your suspicious level is still",suspicious)
-    elif action1 == "4":
-        print(locations[pt1]["vents"])
-        venting = int(input("choose where to vent (write the number):  "))
-        print("you are now in ", locations[venting]["Name"])
-        print(locations[venting])
-
-
-    if action1 == "1" or action1 == "2" or action1 =="3":
-        print("What do you want to do now? Choose a new location to enter:")
-        venting = int(input("..."))
-        print("you are now in ", locations[venting]["Name"])
-        print(locations[venting])        
-       
-       
-        print("Your suspicious is now", {suspicious})
-        print("Your trust is now", {trust})
-
-
-    if suspicious > trust:
+    if self.suspicious > self.trust:
         print("Your suspision is too high, you have been voted out by others!!!!!!! U SUCK")
 
 
 
 
-    if crewmatess == 1:
+    if selfs.crewmatess == 1:
         print("You have killed them all, omg youre so cool, awesome, and amazing!!")
 
 
