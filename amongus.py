@@ -119,31 +119,32 @@ class imposter:
         self.suspicious = suspicious
         self.trust = trust
         self.color = color
-
-
+imposter(suspicious=0,trust = 50)
+    
+         
 def start(self):
-    self.name = input("What do you want your ingame name to be? ")
-    print("You are the imposter, your goal is to decieve and kill all the crewmates.")
-    self.color = input("Choose your color, green, black, red, white or pink?   ")
-    if self.color == "red":
-        self.suspicious +=10
-        self.trust -= 10
-        print("Your trust level is now", self.trust)
-        print("Your sus level is now", self.suspicious)
-    elif self.color == "pink":
-        trust += 5
-        print("Your trust level is now", self.trust)
-        print("Your sus level is now", self.suspicious)
-    else:
-        print("Your trust level is: ", self.trust)
-        print("Your sus level is: ", self.suspicious)
+        self.name = input("What do you want your ingame name to be? ")
+        print("You are the imposter, your goal is to decieve and kill all the crewmates.")
+        self.color = input("Choose your color, green, black, red, white or pink?   ")
+        if self.color == "red":
+            self.suspicious +=10
+            self.trust -= 10
+            print("Your trust level is now", self.trust)
+            print("Your sus level is now", self.suspicious)
+        elif self.color == "pink": 
+            trust += 5
+            print("Your trust level is now", self.trust)
+            print("Your sus level is now", self.suspicious)
+        else:
+            print("Your trust level is: ", self.trust)
+            print("Your sus level is: ", self.suspicious)
 
 
-    for index, room in enumerate(locations):
+        for index, room in enumerate(locations):
 
 
-        print(index,":", room["Name"])
-    print("You have loaded into the game.")
+            print(index,":", room["Name"])
+        print("You have loaded into the game.")
 
 
 
@@ -228,6 +229,7 @@ def emergency(self,random_item):
             elif defence == 2:
                 print("Your crewmates agree to skip")
                 self.trust += 15
+
 
 
 
