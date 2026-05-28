@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 
 import random
 
@@ -99,7 +97,7 @@ class imposter:
         self.trust = trust
         self.color = color
         
-        self.crewmates = ["cyan", "yellow", "brown", "gray", "purple"]  
+        self.crewmates = ["Cyan", "Yellow", "Brown", "Gray", "Purple"]  
 
         if color == "red":
             self.suspicious +=10
@@ -116,8 +114,6 @@ class imposter:
 
 
     def emergency(self, random_item):
-  
-        print("emergency meeting")
         if self.suspicious > 30:
             print("Your crewmates are suspicious of you. What are you gonna do? 1. Defend Yourself, 2. Accuse Someone else, 3. Stay silent")
             defence = int(input("..."))
@@ -148,15 +144,16 @@ class imposter:
    
     def startgame(self): 
         self.showrooms()
-        print("You are the imposter, your goal is to decieve and kill all the crewmates.")      
+        print("You are the imposter, your goal is to decieve and kill all the crewmates.")   
+        print("where do you want to go? Please insert the #")
+        pt1 = int(input("..."))
+   
         while self.trust >= self.suspicious and len(self.crewmates) >= 1:
             random_item = random.choice(self.crewmates)
             find_body = ["Found","Not found"]
             random_body = random.choice(find_body)
          
-            print("where do you want to go? Please insert the #")
-            pt1 = int(input("..."))
-
+           
 
             print("You are now in", locations[pt1]["Name"])
             print(locations[pt1])
@@ -197,7 +194,7 @@ class imposter:
                     self.crewmates.remove(random_item)
                 print(random_item, "is dead")
                 print("The body was", [random_body])
-                print("There are",len(self.crewmatess),"Crewmates left")
+                print("There are",len(self.crewmates),"Crewmates left")
             elif action1 == "2":
                 self.suspicious += 10
                 if random_item in self.crewmates:
@@ -221,7 +218,7 @@ class imposter:
             print("Your suspision is too high, you have been voted out by others!!!!!!! U SUCK")
 
 
-        if len(self.crewmatess) == 1:
+        if len(self.crewmates) == 1:
             print("You have killed them all, omg youre so cool, awesome, and amazing!!")
 
 
@@ -231,4 +228,3 @@ color = input("Choose your color, green, black, red, white or pink?   ")
 impopo = imposter(name, color)
     
 impopo.startgame()
->>>>>>> Stashed changes
