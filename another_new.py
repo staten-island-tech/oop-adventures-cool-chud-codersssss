@@ -142,12 +142,11 @@ class imposter:
                 print("Your crewmates agree to skip")
 
     def kill(self,random_item, random_body):
-        crewmatess -= 1
         suspicious += 10
         self.crewmates.remove(random_item)
         print(random_item, "is dead")
         print("The body was", [random_body])
-        print("There are",crewmatess,"Crewmates left")
+        print("There are",len(self.crewmates),"Crewmates left")
     def vent(self, pt1):
         print(locations[pt1]["vents"])
         venting = int(input("choose where to vent"))
