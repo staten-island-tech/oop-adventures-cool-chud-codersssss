@@ -144,7 +144,8 @@ class imposter:
 
     def kill(self,random_item, random_body):
         self.suspicious += 10
-        self.crewmates.remove(random_item)
+        if random_item in self.crewmates:  
+            self.crewmates.remove(random_item)
         print(random_item, "is dead")
         print("The body was", [random_body])
         print("There are",len(self.crewmates),"Crewmates left")
@@ -169,12 +170,6 @@ class imposter:
 
         print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
         while self.trust >= self.suspicious and len(self.crewmates) >= 1:
-           
-            print("where do you want to go? Please insert the #")
-
-            pt1 = int(input("..."))
-
-            print(locations[pt1])
 
             if pt1 == 6 or pt1 == 5:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
@@ -191,25 +186,40 @@ class imposter:
             if action1 == "1":
                 print(f"Crewmate saw you fake tasks...")
                 self.trust += 10
+                print("where do you want to go? Please insert the #")
+                pt1 = int(input("..."))
             elif action1 == "2":
                 self.kill(random_item, random_body)
+                print("where do you want to go? Please insert the #")
+                pt1 = int(input("..."))
             elif action1 == "3":
                 print("You left", locations[pt1]["Name"],"...")
+                print("where do you want to go? Please insert the #")
+                pt1 = int(input("..."))
             elif action1 == "4":
                 self.vent(pt1)
 
-            elif action1 == "5" or random_body == "Found":
+            elif action1 == "5":
+                print("[-EMERGENCY MEETING-]")
+                self.emergency(random_item)
+                print("where do you want to go? Please insert the #")
+
+                pt1 = int(input("..."))
+            elif random_body == "Found":
                 print("The body was", [random_body])
                 self.crewmates.remove(random_item)
                 print(random_item, "is dead")
                 print(self.crewmates)
                 print("[-EMERGENCY MEETING-]")
                 self.emergency(random_item)
+                print("where do you want to go? Please insert the #")
+
+                pt1 = int(input("..."))
              
 
             if self.suspicious > self.trust:
                 print("Your suspision is too high, you have been voted out by others!!!!!!! U SUCK")
-
+            
 
         else:
             print("You have killed them all, omg youre so cool, awesome, and amazing!!")
