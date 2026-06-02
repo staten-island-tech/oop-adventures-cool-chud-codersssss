@@ -110,7 +110,6 @@ class imposter:
     def showrooms(self):
         for index, room in enumerate(locations):
             print(index,":", room["Name"])
-        print("You have loaded into the game.")
 
 
     def emergency(self, random_item):
@@ -149,11 +148,13 @@ class imposter:
         print(random_item, "is dead")
         print("The body was", [random_body])
         print("There are",len(self.crewmates),"Crewmates left")
-    def vent(self, pt1):
+    def vent(self, pt1,):
         print(locations[pt1]["vents"])
-        venting = int(input("choose where to vent"))
+        pt1 = int(input("choose where to vent"))
+        
+        print("you are now in ", locations[pt1]["Name"])
 
-        print("you are now in ", locations[venting]["Name"])
+
               
 
     def startgame(self): 
@@ -168,15 +169,16 @@ class imposter:
 
         pt1 = int(input("..."))
 
-        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
         while self.trust >= self.suspicious and len(self.crewmates) >= 1:
+            venting = pt1
             random_item = random.choice(self.crewmates)
             find_body = ["Found","Not found"]
             random_body = random.choice(find_body)
-            print(locations[pt1])
             print("You are now in", locations[pt1]["Name"])
+            print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
             print("Your sus level is now.", self.suspicious)
             print("Your trust level is now.",self.trust)
+            print(locations[pt1])
 
             if pt1 == 6 or pt1 == 5:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
@@ -197,7 +199,6 @@ class imposter:
                 pt1 = int(input("..."))
             elif action1 == "2":
                 self.kill(random_item, random_body)
-                print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
                 if random_body == "Found":
                         print("The body was", [random_body])
@@ -206,7 +207,7 @@ class imposter:
                         print(self.crewmates)
                         print("[-EMERGENCY MEETING-]")
                         self.emergency(random_item)
-                        print("where do you want to go? Please insert the #")
+                print("where do you want to go? Please insert the #")
 
                 pt1 = int(input("..."))
             elif action1 == "3":
@@ -216,11 +217,13 @@ class imposter:
             elif action1 == "4":
                 self.vent(pt1)
 
+
             elif action1 == "5":
                 print("[-EMERGENCY MEETING-]")
                 self.emergency(random_item)
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
+            self.showrooms()
 
              
 
@@ -232,9 +235,13 @@ class imposter:
             print("You have killed them all, omg youre so cool, awesome, and amazing!!")
 
 
-name = input("What do you want your ingame name to be? ")
-color = input("Choose your color, green, black, red, white or pink?")
+        name = input("What do you want your ingame name to be? ")
+        if name != self.crewmates:
+            print("Please Select one of the options above.")
 
-impopo = imposter(name, color, 0, 50)
-    
-impopo.startgame()
+            color = input("Choose your color, green, black, red, white or pink?    ")
+            print("You have loaded into the game.")
+
+            impopo = imposter(name, color, 0, 50)
+                
+            impopo.startgame()
