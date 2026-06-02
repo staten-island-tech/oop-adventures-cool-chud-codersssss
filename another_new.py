@@ -143,30 +143,34 @@ class imposter:
                 print("Your crewmates agree to skip")
 
     def kill(self,random_item, random_body):
-        self.suspicious += 10
+        self.suspicious += 15
+        self.trust -= 10
         if random_item in self.crewmates:  
             self.crewmates.remove(random_item)
         print(random_item, "is dead")
         print("The body was", [random_body])
         print("There are",len(self.crewmates),"Crewmates left")
-    def vent(self, pt1):
+    def vent(self, pt1, random_item):
         print(locations[pt1]["vents"])
-        venting = int(input("choose where to vent"))
-
-        print("you are now in ", locations[venting]["Name"])
-              
+        pt1 = int(input("choose where to vent"))
+        print("you are now in ", locations[pt1]["Name"])
+        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
 
     def startgame(self): 
+<<<<<<< HEAD
         print(self.suspicious)
         print(self.trust)
         random_item = random.choice(self.crewmates)
         find_body = ["Found","Not found"]
         random_body = random.choice(find_body)
+=======
+>>>>>>> 38e091ce29c356f78632d0df4a8fa8ad2fbbefd6
         self.showrooms()
         print("You are the imposter, your goal is to decieve and kill all the crewmates.")   
         print("where do you want to go? Please insert the #")
 
         pt1 = int(input("..."))
+<<<<<<< HEAD
 
         print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
         while self.trust >= self.suspicious and len(self.crewmates) >= 1:
@@ -178,16 +182,21 @@ class imposter:
             print("Your sus level is now.", self.suspicious)
             print("Your trust level is now.",self.trust)
 
+=======
+        print("You are now in", locations[pt1]["Name"])
+        print(locations[pt1])
+        while self.trust >= self.suspicious and len(self.crewmates) >= 1:
+            random_item = random.choice(self.crewmates)
+            find_body = ["Found","Not found"]
+            random_body = random.choice(find_body)     
+            print("Your suspicion is now", {self.suspicious}, "Your trust is now", {self.trust})
+>>>>>>> 38e091ce29c356f78632d0df4a8fa8ad2fbbefd6
             if pt1 == 6 or pt1 == 5:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
-                ventss = "none"
             elif pt1 == 0:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, 4. Vent, or 5. Emergency Button? Insert the #   ")
-                ventss = "yes"
             else:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
-                ventss = "yes"
-
 
 
             if action1 == "1":
@@ -197,6 +206,9 @@ class imposter:
                 pt1 = int(input("..."))
             elif action1 == "2":
                 self.kill(random_item, random_body)
+                if random_body == "Found":
+                    print("[-EMERGENCY MEETING-]")
+                    self.emergency(random_item)
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
                 if random_body == "Found":
@@ -214,18 +226,21 @@ class imposter:
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
             elif action1 == "4":
-                self.vent(pt1)
+                self.vent(pt1, random_item)
 
             elif action1 == "5":
                 print("[-EMERGENCY MEETING-]")
                 self.emergency(random_item)
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38e091ce29c356f78632d0df4a8fa8ad2fbbefd6
              
 
-            if self.suspicious > self.trust:
-                print("Your suspision is too high, you have been voted out by others!!!!!!! U SUCK")
+        if self.suspicious > self.trust:
+            print("Your suspision is too high, you have been voted out by others!!!!!!! U SUCK")
             
 
         else:
