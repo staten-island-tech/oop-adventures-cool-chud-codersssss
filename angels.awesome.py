@@ -105,6 +105,11 @@ class imposter:
         elif color == "pink":
             self.trust += 5
 
+    def select_color(self):
+        color = input("What do you want your ingame name to be? ")
+        if color not in self.crewmates:
+            print("Please Select one of the options above.")
+
 
     
     def showrooms(self):
@@ -158,6 +163,7 @@ class imposter:
               
 
     def startgame(self): 
+        self.select_color
         print(self.suspicious)
         print(self.trust)
         random_item = random.choice(self.crewmates)
@@ -235,13 +241,9 @@ class imposter:
             print("You have killed them all, omg youre so cool, awesome, and amazing!!")
 
 
-        name = input("What do you want your ingame name to be? ")
-        if name != self.crewmates:
-            print("Please Select one of the options above.")
+name = input("what do you want to be called?   ")
+impopo = imposter(name, "red", 0, 50)
+color = impopo.color
+print("You have loaded into the game.")
 
-            color = input("Choose your color, green, black, red, white or pink?    ")
-            print("You have loaded into the game.")
-
-            impopo = imposter(name, color, 0, 50)
-                
-            impopo.startgame()
+impopo.startgame()
