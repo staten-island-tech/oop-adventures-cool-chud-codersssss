@@ -175,12 +175,13 @@ class imposter:
             else:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
 
-
             if action1 == "1":
                 print(f"Crewmate saw you fake tasks...")
                 self.trust += 10
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
+                print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+                print(locations[pt1])
             elif action1 == "2":
                 self.kill(random_item, random_body)
                 if random_body == "Found":
@@ -188,10 +189,14 @@ class imposter:
                     self.emergency(random_item)
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
+                print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+                print(locations[pt1])
             elif action1 == "3":
                 print("You left", locations[pt1]["Name"],"...")
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
+                print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+                print(locations[pt1])
             elif action1 == "4":
                 self.vent(pt1, random_item)
 
@@ -199,8 +204,9 @@ class imposter:
                 print("[-EMERGENCY MEETING-]")
                 self.emergency(random_item)
                 print("where do you want to go? Please insert the #")
-
                 pt1 = int(input("..."))
+                print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+                print(locations[pt1])
              
 
         if self.suspicious > self.trust:
