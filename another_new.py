@@ -143,7 +143,7 @@ class imposter:
                 print("Your crewmates agree to skip")
 
     def kill(self,random_item, random_body):
-        self.suspicious += 15
+        self.suspicious += 10
         self.trust -= 10
         if random_item in self.crewmates:  
             self.crewmates.remove(random_item)
@@ -160,7 +160,6 @@ class imposter:
         self.showrooms()
         print("You are the imposter, your goal is to decieve and kill all the crewmates.")   
         print("where do you want to go? Please insert the #")
-
         pt1 = int(input("..."))
         print("You are now in", locations[pt1]["Name"])
         print(locations[pt1])
