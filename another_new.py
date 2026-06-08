@@ -150,16 +150,15 @@ class imposter:
         print(random_item, "is dead")
         print("The body was", [random_body])
         print("There are",len(self.crewmates),"Crewmates left")
-    def vent(self, pt1, random_item):
+    def vent(self, pt1):
         print(locations[pt1]["vents"])
-        pt1 = int(input("choose where to vent"))
-        print("you are now in ", locations[pt1]["Name"])
-        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+        pt1 = int(input("Choose where to vent"))
+        print("You are now in ", locations[pt1]["Name"])
 
     def startgame(self): 
         self.showrooms()
         print("You are the imposter, your goal is to decieve and kill all the crewmates.")   
-        print("where do you want to go? Please insert the #")
+        print("Where do you want to go? Please insert the #")
         pt1 = int(input("..."))
         print("You are now in", locations[pt1]["Name"])
         print(locations[pt1])
@@ -178,7 +177,7 @@ class imposter:
             if action1 == "1":
                 print(f"Crewmate saw you fake tasks...")
                 self.trust += 10
-                print("where do you want to go? Please insert the #")
+                print("Where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
                 print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
                 print(locations[pt1])
@@ -187,23 +186,23 @@ class imposter:
                 if random_body == "Found":
                     print("[-EMERGENCY MEETING-]")
                     self.emergency(random_item)
-                print("where do you want to go? Please insert the #")
+                print("Where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
                 print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
                 print(locations[pt1])
             elif action1 == "3":
                 print("You left", locations[pt1]["Name"],"...")
-                print("where do you want to go? Please insert the #")
+                print("Where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
                 print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
                 print(locations[pt1])
             elif action1 == "4":
-                self.vent(pt1, random_item)
+                self.vent(pt1)
 
             elif action1 == "5":
                 print("[-EMERGENCY MEETING-]")
                 self.emergency(random_item)
-                print("where do you want to go? Please insert the #")
+                print("Where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
                 print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
                 print(locations[pt1])
