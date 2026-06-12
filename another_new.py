@@ -157,21 +157,10 @@ class imposter:
         print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
 
     def startgame(self): 
-<<<<<<< HEAD
-        print(self.suspicious)
-        print(self.trust)
-        random_item = random.choice(self.crewmates)
-        find_body = ["Found","Not found"]
-        random_body = random.choice(find_body)
-=======
->>>>>>> 38e091ce29c356f78632d0df4a8fa8ad2fbbefd6
         self.showrooms()
         print("You are the imposter, your goal is to decieve and kill all the crewmates.")   
         print("where do you want to go? Please insert the #")
-
         pt1 = int(input("..."))
-<<<<<<< HEAD
-
         print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
         while self.trust >= self.suspicious and len(self.crewmates) >= 1:
             random_item = random.choice(self.crewmates)
@@ -182,7 +171,6 @@ class imposter:
             print("Your sus level is now.", self.suspicious)
             print("Your trust level is now.",self.trust)
 
-=======
         print("You are now in", locations[pt1]["Name"])
         print(locations[pt1])
         while self.trust >= self.suspicious and len(self.crewmates) >= 1:
@@ -190,7 +178,6 @@ class imposter:
             find_body = ["Found","Not found"]
             random_body = random.choice(find_body)     
             print("Your suspicion is now", {self.suspicious}, "Your trust is now", {self.trust})
->>>>>>> 38e091ce29c356f78632d0df4a8fa8ad2fbbefd6
             if pt1 == 6 or pt1 == 5:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
             elif pt1 == 0:
@@ -233,10 +220,6 @@ class imposter:
                 self.emergency(random_item)
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
-<<<<<<< HEAD
-
-=======
->>>>>>> 38e091ce29c356f78632d0df4a8fa8ad2fbbefd6
              
 
         if self.suspicious > self.trust:
