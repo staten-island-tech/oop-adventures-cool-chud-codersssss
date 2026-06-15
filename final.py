@@ -257,4 +257,4 @@ impopo = imposter(name, select_color, 0, 50)
 print("You have loaded into the game.")
 
 impopo.startgame()
-2
+
