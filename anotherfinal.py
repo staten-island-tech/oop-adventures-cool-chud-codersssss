@@ -236,7 +236,7 @@ class imposter:
         if len(self.crewmates) == 0:
             print("You won!")
         elif self.suspicious > self.trust:
-            print("You were voted out!")
+            print("Your suspicion was too high, you were voted out!")
 
 
 name = input("what do you want to be called?   ")
