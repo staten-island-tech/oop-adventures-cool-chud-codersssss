@@ -104,13 +104,6 @@ class imposter:
         elif color == "pink":
             self.trust += 5
 
-    def select_color(self):
-        color = input("What do you want your ingame name to be? ")
-        if color not in self.crewmates:
-            print("Please Select one of the options above.")
-
-
-    
     def showrooms(self):
         for index, room in enumerate(locations):
             print(index,":", room["Name"])
@@ -159,16 +152,14 @@ class imposter:
         
     def vent(self, pt1):
         print(locations[pt1]["vents"])
-        pt1 = int(input("choose where to vent"))
+        pt1 = int(input("Choose where to vent, insert #"))
         if pt1 <= 14:
             return pt1
         return("Invalid vent destination.")
 
               
 
-    def startgame(self): 
-        self.select_color()
-
+    def startgame(self):
         print(self.suspicious, "is your suspision level")
         print(self.trust,"is your trust level")
         random_item = random.choice(self.crewmates)
