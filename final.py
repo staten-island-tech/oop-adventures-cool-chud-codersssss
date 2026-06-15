@@ -160,9 +160,10 @@ class imposter:
     def vent(self, pt1):
         print(locations[pt1]["vents"])
         pt1 = int(input("choose where to vent"))
-        
-        return pt1
-
+        for rooms in locations:
+            if pt1 <= 14:
+                return pt1
+        return("Invalid vent destination.")
 
               
 
@@ -192,13 +193,12 @@ class imposter:
 
             if pt1 == 6 or pt1 == 5:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
-                ventss = "none"
+      
             elif pt1 == 0:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, 4. Vent, or 5. Emergency Button? Insert the #   ")
-                ventss = "yes"
+           
             else:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
-                ventss = "yes"
 
 
 
