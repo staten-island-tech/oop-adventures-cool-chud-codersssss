@@ -1,4 +1,3 @@
-
 import random
 
 
@@ -105,12 +104,16 @@ class imposter:
         elif color == "pink":
             self.trust += 5
 
+    def select_color(self):
+        color = input("What do you want your ingame name to be? ")
+        if color not in self.crewmates:
+            print("Please Select one of the options above.")
+
 
     
     def showrooms(self):
         for index, room in enumerate(locations):
             print(index,":", room["Name"])
-        print("You have loaded into the game.")
 
 
     def emergency(self, random_item):
@@ -122,7 +125,9 @@ class imposter:
                 self.trust += 5
                 self.suspicious -= 5
             elif defence == 2:
-                print({random_item}, "was voted out. He was innocent. You are now more suspicious")
+                item = random.choice(self.crewmates)
+                self.crewmates.remove(item)
+                print({item}, "was voted out. He was innocent. You are now more suspicious")
                 if random_item in self.crewmates:    
                     self.crewmates.remove(random_item)
                 print(self.crewmates)
@@ -131,12 +136,14 @@ class imposter:
             elif defence == 3:
                 print("Your crewmates are wary of you.")
                 self.trust -= 5
-                self.suspicious += 5
+                self.suspicious += 15
         else:
             print("Your crewmates are not suspicious of you. What are you gonna do? 1. Accuse Someone else, 2. Skip")
             defence = int(input("..."))
             if defence == 1:
-                print({random_item}, "Was voted out. He was innocent. You are now more suspicious")
+                item = random.choice(self.crewmates)
+                self.crewmates.remove(item)
+                print({item}, "Was voted out. He was innocent. You are now more suspicious")
                 self.trust -= 5
                 self.suspicious += 10
             elif defence == 2:
@@ -144,102 +151,110 @@ class imposter:
 
     def kill(self,random_item, random_body):
         self.suspicious += 10
-        self.trust -= 10
         if random_item in self.crewmates:  
             self.crewmates.remove(random_item)
         print(random_item, "is dead")
         print("The body was", [random_body])
         print("There are",len(self.crewmates),"Crewmates left")
+        
     def vent(self, pt1):
         print(locations[pt1]["vents"])
-        pt1 = int(input("Choose where to vent"))
-        print("You are now in ", locations[pt1]["Name"])
+        pt1 = int(input("choose where to vent"))
+        
+        return pt1
+
+
+              
 
     def startgame(self): 
+        self.select_color
+        game_status = ""
+        print(self.suspicious, "is your suspision level")
+        print(self.trust,"is your trust level")
+        random_item = random.choice(self.crewmates)
+        find_body = ["Found","Not found"]
+        random_body = random.choice(find_body)
         self.showrooms()
         print("You are the imposter, your goal is to decieve and kill all the crewmates.")   
         print("where do you want to go? Please insert the #")
+
         pt1 = int(input("..."))
-        print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
+
         while self.trust >= self.suspicious and len(self.crewmates) >= 1:
             random_item = random.choice(self.crewmates)
             find_body = ["Found","Not found"]
             random_body = random.choice(find_body)
-            print(locations[pt1])
             print("You are now in", locations[pt1]["Name"])
+            print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
             print("Your sus level is now.", self.suspicious)
             print("Your trust level is now.",self.trust)
+            print(locations[pt1])
 
-        print("You are now in", locations[pt1]["Name"])
-        print(locations[pt1])
-        while self.trust >= self.suspicious and len(self.crewmates) >= 1:
-            random_item = random.choice(self.crewmates)
-            find_body = ["Found","Not found"]
-            random_body = random.choice(find_body)     
-            print("Your suspicion is now", {self.suspicious}, "Your trust is now", {self.trust})
             if pt1 == 6 or pt1 == 5:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, or 3. Nothing? [No vents avaliable in this room] Insert the #   ")
+                ventss = "none"
             elif pt1 == 0:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, 4. Vent, or 5. Emergency Button? Insert the #   ")
+                ventss = "yes"
             else:
                 action1 = input("What action would you like to do now? 1. Fake tasks, 2. Kill, 3. Nothing, or 4. Vent? Insert the #   ")
+                ventss = "yes"
+
+
 
             if action1 == "1":
                 print(f"Crewmate saw you fake tasks...")
                 self.trust += 10
-                print("Where do you want to go? Please insert the #")
+                print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
-                print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
-                print(locations[pt1])
             elif action1 == "2":
                 self.kill(random_item, random_body)
+                
                 if random_body == "Found":
                     print("[-EMERGENCY MEETING-]")
                     self.emergency(random_item)
-                print("Where do you want to go? Please insert the #")
-                pt1 = int(input("..."))
-                if random_body == "Found":
-                        print("The body was", [random_body])
-                        self.crewmates.remove(random_item)
-                        print(random_item, "is dead")
-                        print(self.crewmates)
-                        print("[-EMERGENCY MEETING-]")
-                        self.emergency(random_item)
-                        print("where do you want to go? Please insert the #")
-
+                    
+                print("where do you want to go? Please insert the #")
+                self.showrooms()
                 pt1 = int(input("..."))
             elif action1 == "3":
                 print("You left", locations[pt1]["Name"],"...")
-                print("Where do you want to go? Please insert the #")
+                self.showrooms()
+                print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
-                print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
-                print(locations[pt1])
             elif action1 == "4":
-                self.vent(pt1)
+                pt1 = self.vent(pt1)
+
 
             elif action1 == "5":
                 print("[-EMERGENCY MEETING-]")
                 self.emergency(random_item)
-                print("Where do you want to go? Please insert the #")
-                pt1 = int(input("..."))
-                print(f"Crewmate",{random_item}, "is also inside", locations[pt1]["Name"],"...")
-                print(locations[pt1])
-
                 print("where do you want to go? Please insert the #")
                 pt1 = int(input("..."))
-             
 
-        if self.suspicious > self.trust:
+            if self.suspicious > self.trust:
+                game_status = "lost"
+                
+        if game_status == "lost":
             print("Your suspision is too high, you have been voted out by others!!!!!!! U SUCK")
-            
-
         else:
             print("You have killed them all, omg youre so cool, awesome, and amazing!!")
 
 
-name = input("What do you want your ingame name to be? ")
-color = input("Choose your color, green, black, red, white or pink?")
+name = input("what do you want to be called?   ")
 
-impopo = imposter(name, color, 0, 50)
-    
+check = True
+while(check):
+    color = ["red", "pink","white","blue","black"]
+    select_color = input("What color do you want to be?   [red,pink,black,white, or blue]")
+    if select_color in color:
+        check = False
+    else:
+        print("Please select color in the list, small cap")
+
+
+impopo = imposter(name, select_color, 0, 50)
+print("You have loaded into the game.")
+
 impopo.startgame()
+2
